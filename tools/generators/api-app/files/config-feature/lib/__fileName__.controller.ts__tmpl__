@@ -1,0 +1,12 @@
+import { Controller, Get } from '@nestjs/common'
+import { <%= app.className %>ConfigDataAccessService } from '@<%= npmScope %>/<%= app.name %>/config/data-access'
+
+@Controller('config')
+export class <%= className %>Controller {
+  constructor(private readonly service: <%= app.className %>ConfigDataAccessService) {}
+
+  @Get()
+  config() {
+    return this.service.configSummary()
+  }
+}

@@ -1,0 +1,18 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config'
+import { <%= className %>Service } from './api-config-data-access.service';
+import configuration from './config/configuration'
+import { validationSchema } from './config/validation-schema'
+
+@Module({
+  providers: [<%= className %>Service],
+  exports: [<%= className %>Service],
+  imports: [
+    ConfigModule.forRoot({
+      cache: true,
+      load: [configuration],
+      validationSchema,
+    }),
+  ],
+})
+export class <%= className %>Module {}

@@ -1,0 +1,19 @@
+import { Logger, ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { <%= app.className %>ConfigDataAccessService } from '@<%= npmScope %>/<%= app.name %>/config/data-access';
+
+import { AppModule } from './app/app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  const config = app.get(<%= app.className %>ConfigDataAccessService);
+  app.setGlobalPrefix(config.prefix);
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+
+  await app.listen(config.port);
+  Logger.log(
+    `🚀 Application is running on: http://localhost:${config.port}/${config.prefix}`
+  );
+}
+
+bootstrap();
