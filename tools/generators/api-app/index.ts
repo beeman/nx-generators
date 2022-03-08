@@ -29,7 +29,7 @@ export default async function (tree: Tree, schema: any) {
       '@nestjs/config': '^1.2.0',
       joi: '^17.6.0',
     },
-    { '@nrwl/node': '13.8.3' }
+    {}
   );
   await applicationGenerator(tree, { name });
   const project = getProjects(tree).get(name);
