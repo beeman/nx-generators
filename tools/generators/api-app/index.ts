@@ -145,36 +145,13 @@ async function updateAppImports(tree: Tree, app: string) {
 
   // Get the Names
   const appName = app;
-  const configDataAccessName = `${app}-config-data-access`;
   const coreFeatureName = `${app}-core-feature`;
 
   // Get the Package Names
-  const appPackage = `@${npmScope}/${app}/core/feature`;
-  const configDataAccessPackage = `@${npmScope}/${app}/config/data-access`;
   const coreFeaturePackage = `@${npmScope}/${app}/core/feature`;
 
   // Get the Projects
   const appProject = getProjects(tree).get(appName);
-  const configDataAccessProject = getProjects(tree).get(configDataAccessName);
-  const coreFeatureProject = getProjects(tree).get(coreFeatureName);
-
-  // Get Data Access Class Names and Paths
-  const configDataAccessModuleClass = `${
-    names(configDataAccessName).className
-  }Module`;
-  const configDataAccessServiceClass = `${
-    names(configDataAccessName).className
-  }Service`;
-  const coreFeatureModulePath = join(
-    coreFeatureProject.sourceRoot,
-    'lib',
-    `${coreFeatureName}.module.ts`
-  );
-  const dataAccessServicePath = join(
-    configDataAccessProject.sourceRoot,
-    'lib',
-    `${configDataAccessName}.service.ts`
-  );
 
   // Get the FeatureModule Name
   const appModuleClass = `${names('app').className}Module`;
@@ -217,10 +194,4 @@ async function updateAppImports(tree: Tree, app: string) {
     importPackage: coreFeaturePackage,
     targetClass: appModuleClass,
   });
-
-  // const appProject = getProjects(tree).get(app);
-
-  // console.log(appProject.sourceRoot);
-  // console.log(configDataAccessProject.sourceRoot);
-  // console.log(appProject.sourceRoot);
 }
