@@ -1,0 +1,13 @@
+import { PropsWithChildren } from 'react';
+import { ThemeSwitcher } from '../theme-switcher/theme-switcher';
+
+export function Layout({ children }: PropsWithChildren<{}>) {
+  return (
+    <div className="h-full">
+      {children}
+      <div className="absolute bottom-0 left-0 p-4">
+        <ThemeSwitcher />
+      </div>
+    </div>
+  );
+}

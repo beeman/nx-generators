@@ -1,0 +1,13 @@
+import { Layout } from './ui/layout/layout';
+
+export function App() {
+  return (
+    <Layout>
+      <div className="flex justify-center items-center h-full">
+        <div className="text-center text-info text-2xl">Hello <%= className %> 👋</div>
+      </div>
+    </Layout>
+  );
+}
+
+export default App;
