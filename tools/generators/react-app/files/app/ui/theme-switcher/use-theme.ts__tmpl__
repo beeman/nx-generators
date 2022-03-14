@@ -1,29 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-export type Theme = 'dark' | 'light';
+export type Theme = 'dark' | 'light'
 
 export function useTheme(): {
-  theme: Theme;
-  toggleTheme: () => void;
+  theme: Theme
+  toggleTheme: () => void
 } {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('light')
 
   function toggleTheme() {
     if (theme === 'light') {
-      document.querySelector('html')?.setAttribute('data-theme', 'dark');
-      setTheme('dark');
+      document?.querySelector('html')?.setAttribute('data-theme', 'dark')
+      setTheme('dark')
     } else {
-      document.querySelector('html')?.setAttribute('data-theme', 'light');
-      setTheme('light');
+      document?.querySelector('html')?.setAttribute('data-theme', 'light')
+      setTheme('light')
     }
   }
 
   useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = window?.matchMedia ? window?.matchMedia('(prefers-color-scheme: dark)').matches : false
     if (prefersDark) {
-      toggleTheme();
+      toggleTheme()
     }
-  }, []);
+  }, [])
 
-  return { theme, toggleTheme };
+  return { theme, toggleTheme }
 }

@@ -22,6 +22,7 @@ export default async function (tree: Tree, schema: any) {
       autoprefixer: 'latest',
       daisyui: 'latest',
       postcss: 'latest',
+      'react-daisyui': 'latest',
       tailwindcss: 'latest',
     },
     {}
@@ -33,6 +34,7 @@ export default async function (tree: Tree, schema: any) {
     linter: Linter.EsLint,
     skipFormat: true,
     unitTestRunner: 'jest',
+    routing: true,
   });
   const project = getProjects(tree).get(name);
 
@@ -45,6 +47,9 @@ export default async function (tree: Tree, schema: any) {
     ...val,
     scripts: { [`dev:${name}`]: `nx serve ${name}`, ...val.scripts },
   }));
+
+  tree.delete(join(project.sourceRoot, 'app', 'app.module.css'));
+  tree.delete(join(project.sourceRoot, 'app', 'nx-welcome.tsx'));
 
   await formatFiles(tree);
   return () => {
