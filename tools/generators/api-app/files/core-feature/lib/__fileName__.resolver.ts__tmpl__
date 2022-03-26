@@ -1,0 +1,12 @@
+import { Float, Query, Resolver } from '@nestjs/graphql';
+import { <%= app.className %>CoreDataAccessService } from '@<%= npmScope %>/<%= app.name %>/core/data-access'
+
+@Resolver()
+export class <%= className %>Resolver {
+  constructor(private readonly service: <%= app.className %>CoreDataAccessService) {}
+
+  @Query(() => Float)
+  uptime() {
+    return this.service.uptime();
+  }
+}

@@ -50,10 +50,61 @@ export default async function (tree: Tree, schema: any) {
     addDependenciesToPackageJson(
       tree,
       {
-        '@prisma/client': '3.10.0',
+        '@nestjs/apollo': '10.0.8',
+        '@nestjs/graphql': '10.0.8',
+        '@nestjs/passport': '^8.2.1',
+        '@prisma/client': '3.11.1',
+        'apollo-server-express': '3.6.6',
+        'passport-local': '^1.0.0',
+        graphql: '16.3.0',
+        passport: '^0.5.2',
       },
-      { prisma: '3.10.0' }
+      {
+        '@types/passport-local': '^1.0.34',
+        prisma: '3.11.1',
+      }
     );
+
+    await generateApiFeature(tree, { app: name, name: 'core', skipUtil: true });
+
+    const coreFeatureName = `${name}-core-feature`;
+    await generateFiles(
+      tree,
+      join(__dirname, 'files/core-feature'),
+      getProjects(tree).get(coreFeatureName).sourceRoot,
+      {
+        ...names(coreFeatureName),
+        app: names(name),
+        npmScope,
+        tmpl: '',
+      }
+    );
+
+    await generateApiFeature(tree, {
+      app: name,
+      name: 'config',
+      skipUtil: true,
+    });
+    await generateApiFeature(tree, { app: name, name: 'auth', skipUtil: true });
+    await generateApiFeature(tree, {
+      app: name,
+      name: 'user',
+      skipUtil: true,
+      crud: true,
+    });
+
+    const userDataAccessName = `${name}-user-data-access`;
+    await generateFiles(
+      tree,
+      join(__dirname, 'files/user-data-access'),
+      getProjects(tree).get(userDataAccessName).sourceRoot,
+      {
+        ...names(userDataAccessName),
+        npmScope,
+        tmpl: '',
+      }
+    );
+
     await updateAppImports(tree, name);
     const configDataAccessName = `${name}-config-data-access`;
     await generateFiles(
@@ -139,9 +190,6 @@ services:
 
 async function updateAppImports(tree: Tree, app: string) {
   const { npmScope } = getWorkspaceLayout(tree);
-
-  await generateApiFeature(tree, { app, name: 'core', skipUtil: true });
-  await generateApiFeature(tree, { app, name: 'config', skipUtil: true });
 
   // Get the Names
   const appName = app;

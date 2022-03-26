@@ -8,11 +8,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = app.get(<%= app.className %>ConfigDataAccessService);
   app.setGlobalPrefix(config.prefix);
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
   await app.listen(config.port);
   Logger.log(
     `🚀 Application is running on: http://localhost:${config.port}/${config.prefix}`
+  );
+  Logger.log(
+      `🚀 Application is running on: http://localhost:${config.port}/graphql`
   );
 }
 

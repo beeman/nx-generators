@@ -60,7 +60,6 @@ export function apiCrudController(
 
     console.log('Add Crud to Controller', targetClass, name)
 
-    console.log(source.getFullText())
     return source
   })
 }

@@ -14,4 +14,8 @@ export class <%= className %>Service extends PrismaClient implements OnModuleDes
   async onModuleInit() {
     await this.$connect();
   }
+
+  uptime() {
+    return process.uptime();
+  }
 }

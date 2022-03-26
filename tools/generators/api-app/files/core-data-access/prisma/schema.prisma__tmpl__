@@ -7,7 +7,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model App {
-  id    String @id @default(cuid())
-  name  String
+model User {
+  id           String     @id @default(cuid())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @default(now()) @updatedAt
+  role         Role
+  username     String     @unique
+  password     String?
+  name         String?
+  avatarUrl    String?
+  emails       Email[]    @relation("Email_belongsTo_Owner")
 }
+
+enum Role {
+  Admin
+  User
+}
+
+model Email {
+  id            String    @id @default(cuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now()) @updatedAt
+  email         String    @unique
+  owner         User      @relation(name: "Email_belongsTo_Owner", fields: [ownerId], references: [id])
+  ownerId       String
+}
+

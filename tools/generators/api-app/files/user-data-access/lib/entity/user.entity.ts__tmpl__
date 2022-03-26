@@ -1,0 +1,26 @@
+import { Field, ObjectType } from '@nestjs/graphql';
+import { Role } from './role.enum'
+
+@ObjectType()
+export class User {
+  @Field({ nullable: true })
+  id: string;
+
+  @Field({ nullable: true })
+  createdAt: string;
+
+  @Field({ nullable: true })
+  updatedAt: string;
+
+  @Field({ nullable: true })
+  name: string;
+
+  @Field({ nullable: true })
+  username: string;
+
+  @Field({ nullable: true })
+  avatarUrl: string;
+
+  @Field(() => Role, { nullable: true })
+  role: Role;
+}

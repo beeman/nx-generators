@@ -1,0 +1,20 @@
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql'
+import { join } from 'path';
+import { <%= app.className %>CoreDataAccessModule } from '@<%= npmScope %>/<%= app.name %>/core/data-access'
+import { <%= className %>Controller } from './<%= fileName %>.controller';
+import { <%= className %>Resolver } from './<%= fileName %>.resolver';
+
+@Module({
+  controllers: [<%= className %>Controller],
+  providers: [<%= className %>Resolver],
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'api-schema.graphql'),
+    }),
+    <%= app.className %>CoreDataAccessModule
+  ],
+})
+export class <%= className %>Module {}

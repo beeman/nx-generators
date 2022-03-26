@@ -1,4 +1,4 @@
-import { Tree } from '@nrwl/devkit'
+import { names, Tree } from '@nrwl/devkit'
 import { addImportFrom } from './helpers/add-import-from'
 import { getCrudMethods } from './helpers/get-crud-methods'
 import { updateSourceFile } from './helpers/update-source-file'
@@ -17,7 +17,12 @@ export function apiCrudService(
   },
 ) {
   updateSourceFile(tree, path, (source) => {
-    addImportFrom(source, '@prisma/client', 'Prisma')
+    addImportFrom(source, `./dto/${names(name).fileName}-create.input`, [
+      `${names(name).className}CreateInput`,
+    ])
+    addImportFrom(source, `./dto/${names(name).fileName}-update.input`, [
+      `${names(name).className}UpdateInput`,
+    ])
     const { className, createMethod, deleteMethod, findMethod, findOneMethod, updateMethod } = getCrudMethods({
       name,
       plural,
@@ -27,7 +32,7 @@ export function apiCrudService(
     source.getClass(targetClass).addMethods([
       {
         name: createMethod,
-        parameters: [{ name: 'data', type: `Prisma.${className}CreateInput` }],
+        parameters: [{ name: 'data', type: `${className}CreateInput` }],
         statements: [`${statement}.create({ data })`],
       },
       {
@@ -49,7 +54,7 @@ export function apiCrudService(
         name: updateMethod,
         parameters: [
           { name: 'id', type: 'string' },
-          { name: 'data', type: `Prisma.${className}UpdateInput` },
+          { name: 'data', type: `${className}UpdateInput` },
         ],
         statements: [`${statement}.update({ where: { id }, data })`],
       },
@@ -57,7 +62,6 @@ export function apiCrudService(
 
     console.log('Add Crud to Service', targetClass, name)
 
-    console.log(source.getFullText())
     return source
   })
 }
