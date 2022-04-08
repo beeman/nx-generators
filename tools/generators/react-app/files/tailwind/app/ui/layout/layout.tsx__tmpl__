@@ -9,8 +9,8 @@ export interface LayoutLink {
 }
 
 export function Layout({ children, links }: PropsWithChildren<{ links: LayoutLink[] }>) {
-  const appName = 'My App'
-  const appFooter = <p>My Company &copy; 2022</p>
+  const appName = '<%= className %>'
+  const appFooter = <p><%= className %> &copy; {new Date().getUTCFullYear()}</p>;
   return (
     <div className="h-full flex flex-col justify-between">
       <header className="">

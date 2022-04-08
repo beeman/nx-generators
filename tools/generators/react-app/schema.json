@@ -11,7 +11,26 @@
         "$source": "argv",
         "index": 0
       }
+    },
+    "ui": {
+      "description": "The UI library to use.",
+      "type": "string",
+      "enum": ["chakra", "tailwind"],
+      "x-prompt": {
+        "message": "Which UI library would you like to use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "chakra",
+            "label": "Chakra"
+          },
+          {
+            "value": "tailwind",
+            "label": "Tailwind"
+          }
+        ]
+      }
     }
   },
-  "required": ["name"]
+  "required": ["name", "ui"]
 }
