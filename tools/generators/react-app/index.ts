@@ -16,11 +16,11 @@ function getPackages(ui: 'chakra' | 'tailwind'): Record<string, string> {
   switch (ui) {
     case 'chakra':
       return {
-        '@chakra-ui/react': '^1.8.8',
-        '@chakra-ui/icons': '^1.1.7',
+        '@chakra-ui/react': '^2.0.0',
+        '@chakra-ui/icons': '^2.0.0',
         '@emotion/react': '^11.9.0',
         '@emotion/styled': '^11.8.1',
-        'framer-motion': '^6.2.9',
+        'framer-motion': '^6.3.3',
       };
     case 'tailwind':
       return {
