@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { Redirect, Route } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { AboutIndex, HomeIndex} from './feature'
 import { Layout, LayoutLink } from './ui/layout/layout'
 
@@ -11,11 +11,11 @@ export function App() {
   return (
     <ChakraProvider>
       <Layout links={links}>
-        <Route path="/" exact>
-          <Redirect to="/home" />
-        </Route>
-        <Route path="/about" component={AboutIndex} />
-        <Route path="/home" component={HomeIndex} />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/about" element={<AboutIndex />} />
+          <Route path="/home" element={<HomeIndex />} />
+        </Routes>
       </Layout>
     </ChakraProvider>
   )
