@@ -38,7 +38,7 @@ export default async function (tree: Tree, schema: any) {
       e2e: {
         executor: '@nrwl/jest:jest',
         options: {
-          jestConfig: `apps/${name}/jest.config.js`,
+          jestConfig: `apps/${name}/jest.config.ts`,
           passWithNoTests: true,
         },
       },
