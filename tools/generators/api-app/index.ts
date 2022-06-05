@@ -26,7 +26,7 @@ export default async function (tree: Tree, schema: any) {
     {
       'class-transformer': '^0.5.1',
       'class-validator': '^0.13.2',
-      '@nestjs/config': '^1.2.0',
+      '@nestjs/config': '^2.1.0',
       joi: '^17.6.0',
     },
     {}
@@ -50,18 +50,18 @@ export default async function (tree: Tree, schema: any) {
     addDependenciesToPackageJson(
       tree,
       {
-        '@nestjs/apollo': '10.0.8',
-        '@nestjs/graphql': '10.0.8',
+        '@nestjs/apollo': '^10.0.14',
+        '@nestjs/graphql': '^10.0.15',
         '@nestjs/passport': '^8.2.1',
-        '@prisma/client': '3.11.1',
-        'apollo-server-express': '3.6.6',
+        '@prisma/client': '3.14.0',
+        'apollo-server-express': '3.8.2',
         'passport-local': '^1.0.0',
-        graphql: '16.3.0',
-        passport: '^0.5.2',
+        graphql: '16.5.0',
+        passport: '^0.6.0',
       },
       {
         '@types/passport-local': '^1.0.34',
-        prisma: '3.11.1',
+        prisma: '3.14.0',
       }
     );
 

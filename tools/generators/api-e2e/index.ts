@@ -55,7 +55,7 @@ export default async function (tree: Tree, schema: any) {
   addDependenciesToPackageJson(
     tree,
     {},
-    { '@types/supertest': '2.0.11', supertest: '6.2.2' }
+    { '@types/supertest': '2.0.12', supertest: '6.2.3' }
   );
 
   // Add path to app in tsconfig.base.json so the api-e2e project can import it

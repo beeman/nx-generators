@@ -17,12 +17,12 @@ export default async function (tree: Tree, schema: any) {
   addDependenciesToPackageJson(
     tree,
     {
-      '@heroicons/react': 'latest',
-      'next-themes': 'latest',
-      autoprefixer: 'latest',
-      daisyui: 'latest',
-      postcss: 'latest',
-      tailwindcss: 'latest',
+      '@heroicons/react': '^1.0.6',
+      'next-themes': '^0.2.0',
+      autoprefixer: '^10.4.7',
+      daisyui: '^2.15.2',
+      postcss: '^8.4.14',
+      tailwindcss: '^3.0.24',
     },
     {}
   );

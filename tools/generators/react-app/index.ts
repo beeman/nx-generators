@@ -16,20 +16,21 @@ function getPackages(ui: 'chakra' | 'tailwind'): Record<string, string> {
   switch (ui) {
     case 'chakra':
       return {
-        '@chakra-ui/react': '^2.0.0',
-        '@chakra-ui/icons': '^2.0.0',
+        '@chakra-ui/react': '^2.1.2',
+        '@chakra-ui/icons': '^2.0.1',
         '@emotion/react': '^11.9.0',
         '@emotion/styled': '^11.8.1',
-        'framer-motion': '^6.3.3',
+        'framer-motion': '^6.3.10',
       };
     case 'tailwind':
       return {
         '@heroicons/react': '^1.0.6',
-        autoprefixer: '^10.4.4',
-        daisyui: '^2.13.6',
-        postcss: '^8.4.12',
+        'next-themes': '^0.2.0',
         'react-daisyui': '^1.7.6',
-        tailwindcss: '^3.0.23',
+        autoprefixer: '^10.4.7',
+        daisyui: '^2.15.2',
+        postcss: '^8.4.14',
+        tailwindcss: '^3.0.24',
       };
   }
 }
