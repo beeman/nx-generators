@@ -1,0 +1,30 @@
+import { Box, Container, Flex } from '@chakra-ui/react';
+import React, { PropsWithChildren, ReactNode, Suspense } from 'react';
+import { UiLayoutFooter } from './ui-layout-footer';
+import { UiLayoutHeader } from './ui-layout-header';
+import { UiLinks } from './ui-link';
+
+export function UiLayout({
+  children,
+  copyright,
+  links,
+  name,
+}: PropsWithChildren<{
+  copyright: ReactNode;
+  links: UiLinks;
+  name: string;
+}>) {
+  return (
+    <Flex direction="column" h="full">
+      <UiLayoutHeader name={name} links={links} />
+      <Flex direction="column" grow={1} px={[0, 4]} py={[4, 8]}>
+        <Suspense fallback={<Box>Loading...</Box>}>
+          <Container maxW="container.xl" h="full">
+            {children}
+          </Container>
+        </Suspense>
+      </Flex>
+      <UiLayoutFooter copyright={copyright} />
+    </Flex>
+  );
+}

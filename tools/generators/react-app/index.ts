@@ -20,6 +20,7 @@ function getPackages(ui: 'chakra' | 'tailwind'): Record<string, string> {
         '@chakra-ui/icons': '^2.0.1',
         '@emotion/react': '^11.9.0',
         '@emotion/styled': '^11.8.1',
+        '@saas-ui/react': '^1.0.0',
         'framer-motion': '^6.3.10',
       };
     case 'tailwind':

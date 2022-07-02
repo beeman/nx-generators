@@ -1,22 +1,25 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { SaasProvider } from '@saas-ui/react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AboutIndex, HomeIndex} from './feature'
-import { Layout, LayoutLink } from './ui/layout/layout'
+import { UiLayout } from './ui/layout/ui-layout'
+import { UiLinks } from './ui/layout/ui-link'
 
 export function App() {
-  const links: LayoutLink[] = [
+  const copyright = <p><%= className %> &copy; {new Date().getUTCFullYear()}</p>;
+  const name = '<%= className %>';
+  const links: UiLinks = [
     { label: 'Home', path: '/home' },
     { label: 'About', path: '/about' },
   ]
   return (
-    <ChakraProvider>
-      <Layout links={links}>
+    <SaasProvider>
+      <UiLayout name={name} copyright={copyright} links={links}>
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/about" element={<AboutIndex />} />
           <Route path="/home" element={<HomeIndex />} />
         </Routes>
-      </Layout>
-    </ChakraProvider>
+      </UiLayout>
+    </SaasProvider>
   )
 }
