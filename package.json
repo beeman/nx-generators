@@ -9,20 +9,20 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/next": "14.4.0"
+    "@nrwl/next": "14.5.4"
   },
   "devDependencies": {
-    "@nrwl/cli": "14.4.0",
-    "@nrwl/devkit": "14.4.0",
-    "@nrwl/nest": "14.4.0",
-    "@nrwl/node": "14.4.0",
-    "@nrwl/nx-cloud": "14.2.0",
-    "@nrwl/workspace": "14.4.0",
+    "@nrwl/cli": "14.5.4",
+    "@nrwl/devkit": "14.5.4",
+    "@nrwl/nest": "14.5.4",
+    "@nrwl/node": "14.5.4",
+    "@nrwl/nx-cloud": "14.3.0",
+    "@nrwl/workspace": "14.5.4",
     "@types/node": "18.0.0",
     "prettier": "2.7.1",
     "ts-morph": "^13.0.3",
     "typescript": "4.7.4",
-    "nx": "14.4.0"
+    "nx": "14.5.4"
   }
 }
 
