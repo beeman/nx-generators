@@ -14,5 +14,6 @@ export function generateApiLib(
     skipFormat: true,
     controller: type === 'feature',
     service: type === 'data-access',
+    standaloneConfig: true,
   });
 }
