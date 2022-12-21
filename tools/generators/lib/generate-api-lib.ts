@@ -9,7 +9,7 @@ export function generateApiLib(
 ) {
   return libraryGenerator(tree, {
     name: type,
-    directory: `${app}/${name}`,
+    directory: `libs/${app}/${name}`,
     tags: `scope:${app},type:${type}`,
     skipFormat: true,
     controller: type === 'feature',

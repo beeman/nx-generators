@@ -25,13 +25,13 @@ export default async function (tree: Tree, schema: any) {
     tree,
     {
       'class-transformer': '^0.5.1',
-      'class-validator': '^0.13.2',
-      '@nestjs/config': '^2.1.0',
-      joi: '^17.6.0',
+      'class-validator': '^0.14.0',
+      '@nestjs/config': '^2.2.0',
+      joi: '^17.7.0',
     },
     {}
   );
-  await applicationGenerator(tree, { name });
+  await applicationGenerator(tree, { name, directory: 'apps' });
   const project = getProjects(tree).get(name);
 
   await generateFiles(tree, join(__dirname, 'files/app'), project.sourceRoot, {
@@ -50,18 +50,18 @@ export default async function (tree: Tree, schema: any) {
     addDependenciesToPackageJson(
       tree,
       {
-        '@nestjs/apollo': '^10.0.14',
-        '@nestjs/graphql': '^10.0.15',
-        '@nestjs/passport': '^8.2.1',
-        '@prisma/client': '3.14.0',
+        '@nestjs/apollo': '^10.1.7',
+        '@nestjs/graphql': '^10.1.7',
+        '@nestjs/passport': '^9.0.0',
+        '@prisma/client': '4.8.0',
         'apollo-server-express': '3.8.2',
         'passport-local': '^1.0.0',
-        graphql: '16.5.0',
+        graphql: '16.6.0',
         passport: '^0.6.0',
       },
       {
         '@types/passport-local': '^1.0.34',
-        prisma: '3.14.0',
+        prisma: '4.8.0',
       }
     );
 
