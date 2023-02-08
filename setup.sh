@@ -11,4 +11,4 @@ echo "📼  Copying..."
 cp -r tmp/source/nx-generators-main/tools/generators/* tools/generators/
 rm -rf tmp/source
 
-echo "📢  Install: yarn add -D @nrwl/nest @nrwl/next ts-morph"
+echo "📢  Install: yarn add -D @nrwl/nest @nrwl/react ts-morph"

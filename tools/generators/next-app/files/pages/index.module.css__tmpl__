@@ -1,6 +1,0 @@
-.page {
-  @apply h-full flex justify-center items-center
-}
-.header {
-  @apply text-info text-2xl
-}

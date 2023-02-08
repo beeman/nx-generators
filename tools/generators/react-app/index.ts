@@ -26,7 +26,6 @@ function getPackages(ui: 'chakra' | 'tailwind'): Record<string, string> {
     case 'tailwind':
       return {
         '@heroicons/react': '^1.0.6',
-        'next-themes': '^0.2.0',
         'react-daisyui': '^1.7.6',
         autoprefixer: '^10.4.7',
         daisyui: '^2.15.2',

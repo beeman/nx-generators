@@ -13,7 +13,7 @@ wget -O - https://raw.githubusercontent.com/beeman/nx-generators/main/setup.sh |
 ### Install dependencies
 
 ```shell
-yarn add -D @nrwl/nest @nrwl/next ts-morph
+yarn add -D @nrwl/nest @nrwl/react ts-morph
 ```
 
 ### Run generators
@@ -51,15 +51,4 @@ You can generate a feature with CRUD (depends on `@prisma/client`):
 nx workspace-generator api-feature company --crud --plural companies
 ```
 
-#### next-app
-
-Generate a Next.js app with Tailwind, DaisyUI and next-theme.
-
-```shell
-nx workspace-generator next-app web
-# This will generate:
-# - apps/web
-# - apps/web-e2e
-```
-
-# MIT License 2022 beeman
+# MIT License 2023 beeman
